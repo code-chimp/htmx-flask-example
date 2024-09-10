@@ -55,7 +55,11 @@ def contacts_edit_post(contact_id: int = 0) -> Union[str, Response]:
     c: Optional[Contact] = ContactService.find(contact_id)
 
     if c:
-        c.update(request.form['first_name'], request.form['last_name'], request.form['phone'], request.form['email'])
+        c.update(
+            request.form['first_name'],
+            request.form['last_name'],
+            request.form['phone'],
+            request.form['email'])
 
         if c.validate():
             if ContactService.email_exists(c):
