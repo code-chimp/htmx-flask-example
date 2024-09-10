@@ -14,8 +14,11 @@ def index() -> Response:
 @contacts_bp.route('/contacts')
 def contacts() -> str:
     search: Optional[str] = request.args.get('q')
-    contacts_set: List[Contact] = ContactService.search(search) if search else ContactService.all()
-    return render_template('contacts/show_all.html', contacts=contacts_set)
+    page: Optional[int] = int(request.args.get("page", 1))
+
+    contacts_set: List[Contact] = ContactService.search(search) if search else ContactService.all(page)
+
+    return render_template('contacts/show_all.html', contacts=contacts_set, page=page)
 
 
 @contacts_bp.route("/contacts/<int:contact_id>")
@@ -71,9 +74,21 @@ def contacts_edit_post(contact_id: int = 0) -> Union[str, Response]:
     return render_template("contacts/edit.html", contact=c)
 
 
-@contacts_bp.route("/contacts/<int:contact_id>/delete", methods=["POST"])
+@contacts_bp.route("/contacts/<int:contact_id>/email", methods=["GET"])
+def contacts_email_get(contact_id: int = 0) -> str:
+    contact: Optional[Contact] = ContactService.find(contact_id)
+    contact.email = request.args.get('email')
+
+    if contact.validate():
+        if ContactService.email_exists(contact):
+            contact.errors['email'] = 'Email already exists'
+
+    return render_template("contacts/email_input.html", contact=contact)
+
+
+@contacts_bp.route("/contacts/<int:contact_id>", methods=["DELETE"])
 def contacts_delete(contact_id: int = 0) -> Response:
     contact: Optional[Contact] = ContactService.find(contact_id)
     if contact:
         ContactService.delete(contact)
-    return redirect("/contacts")
+    return redirect("/contacts", 303)

@@ -6,13 +6,15 @@
   <title>Contacts App</title>
   <link rel="stylesheet" href="/static/lib/bootstrap/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="/static/lib/font-awesome/css/all.min.css"/>
+  <link rel="stylesheet" href="/static/styles.css"/>
+  <script src="/static/lib/htmx/htmx.min.js"></script>
   <link rel="icon" href="/static/favicon.ico" sizes="32x32"/>
   <link rel="icon" href="/static/icon.svg" type="image/svg+xml"/>
   <link rel="apple-touch-icon" href="/static/apple-touch-icon.png" sizes="180x180"/>
   <link rel="manifest" href="/static/site.webmanifest"/>
   {% block head %}{% endblock %}
 </head>
-<body class="col-lg-8 mx-auto p-4 py-md-5">
+<body class="col-lg-8 mx-auto p-4 py-md-5" hx-boost="true">
 <header class="d-flex align-items-center pb-3 mb-1 border-bottom">
   <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
     <span class="fs-3">Contacts App</span>

@@ -1,22 +1,24 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  <form id="edit-form" action="/contacts/{{ contact.id }}/edit" method="post"></form>
-  <form id="delete-form" action="/contacts/{{ contact.id }}/delete" method="post"></form>
-
   <h3>Update Contact</h3>
   <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-6">
+    <form action="/contacts/{{ contact.id }}/edit" method="post" class="col-sm-12 col-md-6">
       {% include 'contacts/contact_form.html' %}
-      <button type="submit" form="edit-form" class="btn btn-success">
+      <button type="submit" class="btn btn-success">
         <i class="fa fa-floppy-disk"></i>
         Save
       </button>
-      <button type="submit" form="delete-form" class="btn btn-danger float-end">
+      <button type="button"
+              class="btn btn-danger float-end"
+              hx-delete="/contacts/{{ contact.id }}"
+              hx-confirm="Are you sure you want to delete {{ contact.first }} {{ contact.last }}?"
+              hx-target="body"
+              hx-push-url="true">
         <i class="fa fa-trash"></i>
         Delete
       </button>
-    </div>
+    </form>
   </div>
 
   <p>

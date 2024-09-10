@@ -2,7 +2,7 @@ import json
 from typing import Dict, List, Optional
 from contact import Contact
 
-PAGE_SIZE = 100
+PAGE_SIZE = 10
 
 
 class ContactService:

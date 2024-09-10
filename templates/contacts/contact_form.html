@@ -1,18 +1,9 @@
-<div class="mb-3">
-  <label for="email" class="form-label">Email</label>
-  <input id="email" name="email"
-         {% if contact.id is not none %}form="edit-form"{% endif %}
-         type="email"
-         value="{{ contact.email or '' }}"
-         class="form-control{{ " is-invalid" if contact.errors['email'] }}"
-         aria-describedby="emailStatus"
-         placeholder="Email"/>
-  <span id="emailStatus" class="invalid-feedback">{{ contact.errors['email'] }}</span>
+<div id="emailInputContainer" class="mb-3">
+  {% include 'contacts/email_input.html' %}
 </div>
 <div class="mb-3">
   <label for="first_name" class="form-label">First Name</label>
   <input id="first_name" name="first_name"
-         {% if contact.id is not none %}form="edit-form"{% endif %}
          type="text"
          value="{{ contact.first or '' }}"
          class="form-control{{ " is-invalid" if contact.errors['first'] }}"
@@ -23,7 +14,6 @@
 <div class="mb-3">
   <label for="last_name" class="form-label">Last Name</label>
   <input id="last_name" name="last_name"
-         {% if contact.id is not none %}form="edit-form"{% endif %}
          type="text"
          value="{{ contact.last or '' }}"
          class="form-control{{ " is-invalid" if contact.errors['last'] }}"
@@ -34,7 +24,6 @@
 <div class="mb-3">
   <label for="phone" class="form-label">Phone</label>
   <input id="phone" name="phone"
-         {% if contact.id is not none %}form="edit-form"{% endif %}
          type="tel"
          value="{{ contact.phone or '' }}"
          class="form-control{{ ' is-invalid' if contact.errors['phone'] }}"

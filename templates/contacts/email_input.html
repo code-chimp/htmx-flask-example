@@ -1,0 +1,11 @@
+<label for="email" class="form-label">Email</label>
+<input id="email" name="email"
+       type="email"
+       hx-get="/contacts/{{ contact.id }}/email"
+       hx-target="#emailInputContainer"
+       hx-trigger="change, keyup delay:500ms changed"
+       value="{{ contact.email or '' }}"
+       class="form-control{{ " is-invalid" if contact.errors['email'] }}"
+       aria-describedby="emailStatus"
+       placeholder="Email"/>
+<span id="emailStatus" class="invalid-feedback">{{ contact.errors['email'] }}</span>

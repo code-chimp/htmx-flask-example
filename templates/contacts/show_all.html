@@ -58,13 +58,25 @@
       </tbody>
       <tfoot>
       <tr>
-        <td colspan="5">
-          <div class="row d-flex justify-content-end p-2 g-3">
-            <a href="/contacts/new" class="btn btn-outline-primary d-block" role="button">
-              <i class="fa fa-circle-plus"></i>
-              Add Contact
-            </a>
-          </div>
+        <td colspan="4" style="border-right: none">
+          <a href="/contacts/new" class="btn btn-outline-primary" role="button">
+            <i class="fa fa-circle-plus"></i>
+            Add Contact
+          </a>
+        </td>
+        <td class="d-flex justify-content-end" style="border-left: none">
+          <a href="/contacts?page={{ page - 1 }}"
+             title="Previous"
+             class="btn btn-primary{% if page == 1 %} disabled-link{% endif %}"
+             role="button">
+            <i class="fa fa-backward"></i>
+          </a>
+          <a href="/contacts?page={{ page + 1 }}"
+             title="Next"
+             class="btn btn-primary ms-1{% if contacts|length < 10 %} disabled-link{% endif %}"
+             role="button">
+            <i class="fa fa-forward"></i>
+          </a>
         </td>
       </tr>
       </tfoot>
