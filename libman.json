@@ -10,16 +10,6 @@
         ]
     },
     {
-      "library": "bootstrap@5.3.3",
-      "destination": "static/lib/bootstrap",
-      "files": [
-        "css/bootstrap.min.css",
-        "css/bootstrap.min.css.map",
-        "js/bootstrap.bundle.min.js",
-        "js/bootstrap.bundle.min.js.map"
-      ]
-    },
-    {
       "library": "font-awesome@6.6.0",
       "destination": "static/lib/font-awesome",
       "files": [

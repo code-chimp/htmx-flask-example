@@ -1,4 +1,4 @@
-<div class="mb-3">
+<div class="mb-4">
   <label for="email" class="form-label">Email</label>
   <input id="email" name="email"
          {% if contact.id is not none %}form="edit-form"{% endif %}
@@ -9,7 +9,7 @@
          placeholder="Email"/>
   <span id="emailStatus" class="invalid-feedback">{{ contact.errors['email'] }}</span>
 </div>
-<div class="mb-3">
+<div class="mb-4">
   <label for="first_name" class="form-label">First Name</label>
   <input id="first_name" name="first_name"
          {% if contact.id is not none %}form="edit-form"{% endif %}
@@ -20,7 +20,7 @@
          placeholder="First Name"/>
   <span id="firstStatus" class="invalid-feedback">{{ contact.errors['first'] }}</span>
 </div>
-<div class="mb-3">
+<div class="mb-4">
   <label for="last_name" class="form-label">Last Name</label>
   <input id="last_name" name="last_name"
          {% if contact.id is not none %}form="edit-form"{% endif %}
@@ -31,7 +31,7 @@
          placeholder="Last Name"/>
   <span id="lastStatus" class="invalid-feedback">{{ contact.errors['last'] }}</span>
 </div>
-<div class="mb-3">
+<div class="mb-4">
   <label for="phone" class="form-label">Phone</label>
   <input id="phone" name="phone"
          {% if contact.id is not none %}form="edit-form"{% endif %}
@@ -39,6 +39,6 @@
          value="{{ contact.phone or '' }}"
          class="form-control{{ ' is-invalid' if contact.errors['phone'] }}"
          aria-describedby="phoneStatus"
-         placeholder="Phone"/>
+         placeholder="###-###-####"/>
   <span id="phoneStatus" class="invalid-feedback">{{ contact.errors['phone'] }}</span>
 </div>

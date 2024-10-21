@@ -333,3 +333,5 @@ instance/*
 
 ## Project Overrides
 !/static/lib
+
+node_modules/
